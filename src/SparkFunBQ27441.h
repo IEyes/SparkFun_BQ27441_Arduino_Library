@@ -87,6 +87,8 @@ public:
 		@return true if communication was successful.
 	*/
 	bool begin(void);
+
+	bool begin(const uint8_t sda, const uint8_t scl);
 	
 	/**
 	    Configures the design capacity of the connected battery.

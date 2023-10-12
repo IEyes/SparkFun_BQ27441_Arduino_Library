@@ -47,6 +47,23 @@ bool BQ27441::begin(void)
 	return false; // Otherwise return false
 }
 
+bool BQ27441::begin(const uint8_t sda, const uint8_t scl)
+{
+	uint16_t deviceID = 0;
+	
+	Wire.begin(sda, scl); // Initialize I2C master
+	
+	deviceID = deviceType(); // Read deviceType from BQ27441
+	
+	if (deviceID == BQ27441_DEVICE_ID)
+	{
+		return true; // If device ID is valid, return true
+	}
+	
+	return false; // Otherwise return false
+}
+
+
 // Configures the design capacity of the connected battery.
 bool BQ27441::setCapacity(uint16_t capacity)
 {
